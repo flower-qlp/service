@@ -6,9 +6,9 @@
 </head>
 <body>
 <form action="/login/form/account" method="post">
-    用户名:<input>
-    密码 :<input>
-    <button type="submit"></button>
+    用户名:<input name="userName">
+    密码 :<input name="passWord">
+    <button type="submit">登陆</button>
 </form>
 </body>
 </html>

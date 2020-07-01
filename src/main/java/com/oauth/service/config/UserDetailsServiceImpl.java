@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * @author itoutsource.cz10
+ */
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {
 
