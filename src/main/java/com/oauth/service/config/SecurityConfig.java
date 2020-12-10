@@ -29,8 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * UserDetailsService 接口的实现
      **/
-//    @Autowired
-//    private UserDetailsServiceImpl userDetailsService;
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -83,9 +83,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/oauth/my_approval_page")
                 .and()
                 .authorizeRequests()//以下是定义哪些接口需要保护 哪些不用
-                .antMatchers("/login/**", "/static/**", "/oauth/**").permitAll()
                 .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
-                .anyRequest().authenticated(); //任何接口需要登录后才可以访问
+                .antMatchers("/login/**", "/static/**", "/oauth/**").permitAll();
+                //.anyRequest()//任何接口需要登录后才可以访问
+                //.authenticated();
 
     }
 
