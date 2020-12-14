@@ -16,7 +16,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/findUserByName")
+    @GetMapping(value = "/api/findUserByName")
     public User findUser(@RequestParam(value = "userName", required = false) String userName) {
         return userService.findByUsername(userName);
     }
