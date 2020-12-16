@@ -1,4 +1,4 @@
-package com.oauth.service.config;
+package com.oauth.service.config.clientcredentials;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,8 +10,8 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 /**
  * 资源服务器配置
  **/
-@Configuration
-@EnableResourceServer
+//@Configuration
+//@EnableResourceServer
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
     private static final String RESOURCE_ID = "api";

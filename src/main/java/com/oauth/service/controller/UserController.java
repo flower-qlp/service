@@ -17,7 +17,12 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(value = "/api/findUserByName")
-    public User findUser(@RequestParam(value = "userName", required = false) String userName) {
+    public User findUserApi(@RequestParam(value = "userName", required = false) String userName) {
+        return userService.findByUsername(userName);
+    }
+
+    @GetMapping(value = "/test/findUserByName")
+    public User findUserTest(@RequestParam(value = "userName", required = false) String userName) {
         return userService.findByUsername(userName);
     }
 

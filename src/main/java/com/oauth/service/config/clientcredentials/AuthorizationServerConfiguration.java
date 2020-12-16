@@ -1,4 +1,4 @@
-package com.oauth.service.config;
+package com.oauth.service.config.clientcredentials;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * 授权服务器配置
  **/
-@Configuration
-@EnableAuthorizationServer
+//@Configuration
+//@EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
     @Autowired

@@ -1,4 +1,4 @@
-package com.oauth.service.config;
+package com.oauth.service.config.clientcredentials;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +12,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)//方法级权限认证
+//@Configuration
+//@EnableWebSecurity
+//@EnableGlobalMethodSecurity(prePostEnabled = true)//方法级权限认证
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     //通过userDetailsService实现查询数据库,手机,二维码认证

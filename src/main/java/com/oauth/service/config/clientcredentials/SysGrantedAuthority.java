@@ -1,4 +1,4 @@
-package com.oauth.service.config;
+package com.oauth.service.config.clientcredentials;
 
 import org.springframework.security.core.GrantedAuthority;
 
