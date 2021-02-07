@@ -1,9 +1,14 @@
 package com.oauth.service.bean;
 
-import java.io.Serializable;
-import java.util.Date;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-public class User implements Serializable {
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+
+public class User implements Serializable, UserDetails {
 
     private static final long serialVersionUID = 6460144378772183683L;
 
@@ -14,6 +19,21 @@ public class User implements Serializable {
     private String tel;
     private String gender;
     private Date createTime;
+
+    private List<Role> authorities;
+
+    public User() {
+    }
+
+    public User(String username, String password, List<Role> authorities) {
+        this.username = username;
+        this.password = password;
+        this.authorities = authorities;
+    }
+
+    public void setAuthorities(List<Role> authorities) {
+        this.authorities = authorities;
+    }
 
     public Long getId() {
         return id;
@@ -31,16 +51,43 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    @Override
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
     }
 
     public void setPassword(String password) {

@@ -34,7 +34,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     /**
      * 匹配用户时密码规则
      **/
-    @Bean(value = "localPassword")
+    @Bean(name = "localPassword")
+    @Qualifier("localPassword")
     public PasswordEncoder passwordEncoder() {
         //不能用factory 会报Id 为 null
         return new BCryptPasswordEncoder();
@@ -55,7 +56,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      * 实现 OAuth2 的 password 模式必须要指定的授权管理 Bean。
      **/
     @Override
-    @Bean
+    @Bean(name = "authenticationManager")
+    @Qualifier("authenticationManager")
     public AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
     }

@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface UserMapper {
 
-    @Insert("INSERT INTO sys_user(id,name,username,password,tel,gender,createTime) VALUES(#{id},#{name},#{username},#{password},#{tel},#{gender},#{createTime})")
+    @Insert("INSERT INTO sys_user(name,username,password,tel,gender,createTime) VALUES(#{name},#{username},#{password},#{tel},#{gender},#{createTime})")
     void insert(User user);
 
     @Delete("DELETE FROM sys_user WHERE id = #{id}")

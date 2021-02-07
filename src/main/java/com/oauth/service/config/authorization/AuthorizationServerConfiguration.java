@@ -20,7 +20,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 import javax.sql.DataSource;
@@ -89,8 +88,7 @@ public class AuthorizationServerConfiguration
         clients.inMemory()
                 .withClient(properties.getProperty(PROP_CLIENT_ID))
                 .redirectUris("http://www.baidu.com")
-                .scopes("read", "write")
-                .authorities("ROLE_CLIENT")
+                .scopes("all")
                 .authorizedGrantTypes("password", "refresh_token")
                 .secret(passwordEncoder.encode(properties.getProperty(PROP_SECRET)))
                 .accessTokenValiditySeconds(Integer.valueOf(properties.getProperty(PROP_TOKEN_VALIDITY_SECONDS)));

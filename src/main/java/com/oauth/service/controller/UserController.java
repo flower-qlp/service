@@ -27,6 +27,13 @@ public class UserController {
         return userService.findByUsername(userName);
     }
 
+
+    @PostMapping(value = "/api/saveUser")
+    public void saveUser(@RequestParam(value = "userName", required = true) String userName,
+                         @RequestParam(value = "password", required = true) String password) {
+        userService.saveUser(userName,password);
+    }
+
     @GetMapping(value = "/test/findUserByName")
     public User findUserTest(@RequestParam(value = "userName", required = false) String userName) {
         return userService.findByUsername(userName);
