@@ -1,0 +1,7 @@
+1.需要定义用户bean 实现 UserDetails,Serializable
+ 不实现:1.密码验证后会报 userDetail未使用默认序列化
+
+ UserDetails 里面的 默认 方法返回值 改为true，或者根据实际来  否则 正好验证过后依然无法得到token
+
+ UserDetails 的实现类 localUserDetail中返回的密码是加密之后的密码
+ 否则会提示 password 不是 一个BCryptPassword,所以存入系统时也要加码

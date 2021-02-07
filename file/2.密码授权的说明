@@ -1,0 +1,9 @@
+1.在@EnableWebSecurity注解文件中
+authenticationManager 实现 OAuth2 的 password 模式必须要指定的授权管理 Bean
+
+2.@EnableAuthorizationServer注解文件中
+ClientDetailsServiceConfigurer 中 .secret("secret")需要passwordEncode.encode()加密否则会一直提示bad secret
+
+AuthorizationServerSecurityConfigurer 中
+security.allowFormAuthenticationForClients(); 这个添加之后 postman中参数加入 secret_id和secret才可以成功
+不加默认是通过basic auth认证
