@@ -1,4 +1,4 @@
-package com.oauth.service.config.authorization;
+package com.oauth.service.config.passwordmode;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;

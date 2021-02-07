@@ -1,4 +1,4 @@
-package com.oauth.service.config.authorization;
+package com.oauth.service.config.passwordmode;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

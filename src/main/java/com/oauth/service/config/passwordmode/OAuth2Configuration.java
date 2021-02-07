@@ -1,4 +1,4 @@
-package com.oauth.service.config.authorization;
+package com.oauth.service.config.passwordmode;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
