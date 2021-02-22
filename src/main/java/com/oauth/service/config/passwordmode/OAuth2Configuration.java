@@ -24,6 +24,9 @@ public class OAuth2Configuration {
         @Autowired
         private CustomLogoutSuccessHandler logoutSuccessHandler;
 
+        /**
+         * 资源服务器的权限设置
+         **/
         @Override
         public void configure(HttpSecurity http) throws Exception {
             http.exceptionHandling()
@@ -33,12 +36,11 @@ public class OAuth2Configuration {
                     .logoutSuccessHandler(logoutSuccessHandler)
                     .and()
                     .authorizeRequests()
-                    .antMatchers("/api/**").permitAll()
-                    .antMatchers("/oauth/**").permitAll()
+                    .antMatchers("/api/**", "/oauth/**", "/login/**", "/static/**")
+                    .permitAll()
                     .anyRequest().authenticated();
 
         }
-
 
 
     }

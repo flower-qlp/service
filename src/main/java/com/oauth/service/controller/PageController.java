@@ -11,6 +11,11 @@ public class PageController {
         return "login";
     }
 
+    @RequestMapping(value = "/login/approve")
+    public String approve() {
+        return "approve";
+    }
+
     @RequestMapping(value = "/oauth/my_approval_page")
     public String approval() {
         return "my_approval_page";

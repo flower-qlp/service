@@ -1,5 +1,6 @@
-package com.oauth.service.config.passwordmode;
+package com.oauth.service.config;
 
+import com.oauth.service.config.passwordmode.LocalUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.bind.BindResult;
@@ -65,6 +66,10 @@ public class AuthorizationServerConfiguration
         return new RedisTokenStore(redisConnectionFactory);
     }
 
+    /**
+     * 令牌访问端点
+     * 用来配置令牌（token）的访问端点和令牌服务(tokenservices)。
+     */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         //指定 token 的存储方式。
@@ -82,13 +87,26 @@ public class AuthorizationServerConfiguration
                 .allowFormAuthenticationForClients();
     }
 
+    /**
+     * 配置客户端详情信息(谁来申请令牌)
+     * 用来配置客户端详情服务（ClientDetailsService），客户端详情信息在
+     * 这里进行初始化，你能够把客户端详情信息写死在这里或者是通过数据库来存储调取详情信息。
+     */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        /**使用内存的方式*/
         clients.inMemory()
                 .withClient(properties.getProperty(PROP_CLIENT_ID))
-                .redirectUris("http://www.baidu.com")
+                //加上验证回调地址
+                .redirectUris("http://localhost:8080/login/approve")
+                // 允许的授权范围（客户端的权限）
                 .scopes("all")
-                .authorizedGrantTypes("password", "refresh_token")
+                //资源列表，可以访问的资源列表某一个资源服务的ID
+                .resourceIds("oauth2-resource")
+                // 该client允许的授权类型
+                .authorizedGrantTypes("authorization_code", "password","client_credentials","implicit","refresh_token")
+                //false跳转到授权页面
+                .autoApprove(false)
                 .secret(passwordEncoder.encode(properties.getProperty(PROP_SECRET)))
                 .accessTokenValiditySeconds(Integer.valueOf(properties.getProperty(PROP_TOKEN_VALIDITY_SECONDS)));
     }

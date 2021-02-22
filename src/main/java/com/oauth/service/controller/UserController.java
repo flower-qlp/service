@@ -39,11 +39,4 @@ public class UserController {
         return userService.findByUsername(userName);
     }
 
-    @GetMapping(value = "/login/form/account")
-    public User loginAccount(@RequestParam(value = "userName", required = true) String userName,
-                             @RequestParam(value = "passWord", required = true) String passWord) {
-        return userService.findByUsername(userName);
-    }
-
-
 }
